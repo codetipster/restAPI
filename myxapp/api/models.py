@@ -2,7 +2,7 @@
 from mongoengine import *
 import datetime
 
-from mongoengine.document import Document, EmbeddedDocument, EmbeddedDocumentField
+from mongoengine.document import Document, EmbeddedDocument, EmbeddedDocumentList
 from mongoengine.fields import EmailField, StringField, DateTimeField, BooleanField, ListField, ReferenceField
 # Create your models here.
 
@@ -16,20 +16,20 @@ class User(Document):
     created_at = DateTimeField(default=datetime.datetime.utcnow())
     is_active = BooleanField(default=True)
 
-class UserInterests(EmbeddedDocument):
-    pass
+# class UserInterests(EmbeddedDocument):
+#     pass
 
-class UserExpertAreas(EmbeddedDocument):
-    pass
+# class UserExpertAreas(EmbeddedDocument):
+#     pass
 
-class UserInfo(EmbeddedDocument):
-    pass
+# class UserInfo(EmbeddedDocument):
+#     pass
 
 
-class Profile(Document): #Upon authentication, users should be able to create profile
-    """Every User sets their profile with this model"""
+# class Profile(Document): #Upon authentication, users should be able to create profile
+#     """Every User sets their profile with this model"""
 
-    user = ReferenceField(User) #Every user has a profile
-    interested_in = ListField(EmbeddedDocumentField(UserInterests))
-    expert_in = ListField(EmbeddedDocumentField(UserExpertAreas))
-    basic_info = ListField(EmbeddedDocumentField(UserInfo))
+#     user = ReferenceField(User) #Every user has a profile
+#     interested_in = ListField(EmbeddedDocumentList(UserInterests))
+#     expert_in = ListField(EmbeddedDocumentList(UserExpertAreas))
+#     basic_info = ListField(EmbeddedDocumentList(UserInfo))
